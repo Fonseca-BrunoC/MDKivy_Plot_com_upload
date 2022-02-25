@@ -14,13 +14,6 @@
                     icon: 'folder'
                     on_release: root.show_load()
 
-        MDBoxLayout:
-            MDFloatLayout:
-                id: graph
-                orientation: 'vertical'
-                size_hint_y: 1.5
-                size_hint_x: 1.5
-                pos_hint: {'center_x': 0.5, 'center_y': 0.6}
 
 <LoadDialog>
     MDBoxLayout:
@@ -29,7 +22,8 @@
         size: root.size
         FileChooserIconView:
             id: loadfile
-            on_selection: root.load(loadfile.path, loadfile.selection), root.cancel()
+            on_selection: root.load(loadfile.path, loadfile.selection), root.cancel(), root.open_result()
+
 
         MDBoxLayout:
             size_hint_y: 0.08
@@ -38,3 +32,20 @@
                     pos_hint:{'center_x':0.5, 'center_y':0.5}
                     text: "Cancel"
                     on_release: root.cancel()
+
+<ResultDialog>
+    MDBoxLayout:
+        id: grafico
+        orientation: 'vertical'
+        pos_hint: {'center_x':0.5, 'center_y':0.55}
+        size_hint_x: 0.9
+        size_hint_y: 0.9
+
+    MDBoxLayout:
+        size_hint_y: 0.08
+        pos: root.pos
+        MDFloatLayout:
+            MDRectangleFlatButton:
+                pos_hint:{'center_x':0.5, 'center_y':0.2}
+                text: "Voltar"
+                on_release: root.cancel2()
